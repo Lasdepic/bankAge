@@ -54,7 +54,7 @@ rl.question("Comment vous appelez-vous ? ", function(user) {
                 console.log(`Votre nouveau solde est de ${solde} euros.`);
             }
 
-            rl.close();
+            rl.close(); // sinon mon code ne s'arrete pas
         });
     });
 });
