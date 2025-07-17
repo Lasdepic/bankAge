@@ -1,31 +1,41 @@
+//Variable
+
 let user = "Jordan";
-let age = 30; // Changé en nombre au lieu de chaîne
-let bank = 1200;
-let depense = 300;
+let age = 30;
+let compte = 3000;
+let facture = 1200;
+let loisir = 300;
+let retrait = 500;
 
-function major(age) {
-    if (age < 18) { // Changé <= en < pour une logique plus correcte
-        console.log("Vous ne pouvez pas retirer de l'argent");
-        return false;
-    }
-    else {
-        console.log("Vous pouvez retirer de l'argent");
-        return true;
-    }
+
+// Fonction calule le solde restant
+
+function soldeRestant(compte, facture, loisir) {
+    let solde = compte - facture - loisir;
+    return solde;
 }
 
-function restant(bank, depense) {
-    let reste = bank - depense;
-    if (reste <= 0) {
-        console.log("Fonds insuffisants");
-    }
-    else {
-        console.log("Il vous reste " + reste + " euros");
-    }
-    return reste; // Retourner la valeur pour l'utiliser ailleurs
+console.log("Bonjour " + user + ", votre solde est de " + soldeRestant(compte, facture, loisir) + " euros.");
+
+// Fonction de retrait avec conditon pour le retrait d'argent
+
+function retraitArgent(solde, retrait){
+    return solde - retrait; 
 }
 
-// Appeler les fonctions et utiliser leurs résultats
-major(age);
-let soldeRestant = restant(bank, depense);
-console.log(user + " Il vous reste " + soldeRestant + " euros dans votre compte");
+if (age <= 18){
+    console.log("Vous n'avez pas le droit de retirer de l'argent.");
+    return;
+} else {
+    console.log("Vous pouvez retirer de l'argent.");
+}
+
+if (retrait > soldeRestant(compte, facture, loisir)) {
+    console.log("Vous n'avez pas assez d'argent pour retirer " + retrait + " euros.");
+} else {
+    console.log("Opération réussie, vous avez retiré " + retrait + " euros.");
+}
+
+console.log("Votre nouveau solde est de " + retraitArgent(soldeRestant(compte, facture, loisir), retrait) + " euros.");
+
+
